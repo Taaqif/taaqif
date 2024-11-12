@@ -5,12 +5,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --cursor-color: #333;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #11171c;
     --foreground: #ededed;
+    --cursor-color: #fff;
   }
 }
 
@@ -18,6 +20,15 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+canvas {
+  pointer-events: auto;
+}
+a,
+ol,
+li {
+  pointer-events: auto;
 }
 
 @layer utilities {
