@@ -33,18 +33,18 @@ function expandTextNode(
   return [node];
 }
 
-export type TextStaggerRevealProps = {
+export type StaggerRevealProps = {
   children: React.ReactNode;
   explode?: "characters" | "words";
   trailChildrenClassName?: React.ComponentProps<"div">["className"];
 } & UseTrailProps;
 
-export default function TextStaggerReveal({
+export default function StaggerReveal({
   children,
   explode,
   trailChildrenClassName,
   ...trailProps
-}: TextStaggerRevealProps) {
+}: StaggerRevealProps) {
   const expandedContent = !!explode
     ? expandTextNode(children, explode === "words" ? " " : "")
     : React.Children.toArray(children);

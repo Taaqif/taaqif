@@ -1,4 +1,4 @@
-import TextStaggerReveal from "@/components/TextStaggerReveal";
+import StaggerReveal from "@/components/StaggerReveal";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-start flex-1 justify-between pb-16">
         <div>
           <div className="text-7xl sm:text-8xl md:text-9xl">
-            <TextStaggerReveal
+            <StaggerReveal
               explode="characters"
               from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
               to={{ transform: "translate(0px, 0px)", opacity: 1 }}
@@ -16,12 +16,12 @@ export default function Home() {
               Tye
               <br />
               Peck
-            </TextStaggerReveal>
+            </StaggerReveal>
           </div>
         </div>
         <div className="flex flex-col gap-8 row-start-2 items-start ">
           <div className="text-3xl md:text-5xl">
-            <TextStaggerReveal
+            <StaggerReveal
               delay={800}
               from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
               to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
@@ -29,10 +29,10 @@ export default function Home() {
             >
               <div>Senior Full Stack</div>
               <div>Software Engineer</div>
-            </TextStaggerReveal>
+            </StaggerReveal>
           </div>
           <div className="text-lg md:text-xl flex gap-x-1 flex-wrap">
-            <TextStaggerReveal
+            <StaggerReveal
               delay={1200}
               explode="words"
               from={{
@@ -50,7 +50,7 @@ export default function Home() {
               experience.
               <hr className="w-full border-none" />
               Currently working at Novata Solutions
-            </TextStaggerReveal>
+            </StaggerReveal>
           </div>
         </div>
       </main>

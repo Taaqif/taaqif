@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import FluidContainer from "@/components/FluidContainer";
-import CursorContainer from "@/components/CursorContainer";
+import StickyCursor from "@/components/StickyCursor";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +35,7 @@ export default function RootLayout({
         </div>
 
         <FluidContainer />
-        <CursorContainer />
+        <StickyCursor />
       </body>
     </html>
   );

@@ -3,13 +3,15 @@ import { useSpring } from "@react-spring/web";
 import React, { useCallback, useEffect, useState } from "react";
 import { a } from "@react-spring/web";
 
-export default function CursorContainer() {
+export default function StickyCursor() {
   const cursorSize = 10;
   const cursorOuterSize = cursorSize * 5;
   const [isVisible, setIsVisible] = useState(false);
+  const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
+  const startingY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
   const [cursorPosition, setCursorPosition] = useSpring(() => ({
-    left: window.innerWidth / 2,
-    top: window.innerHeight / 2,
+    left: startingX,
+    top: startingY,
     config: {
       tension: 300,
       friction: 20,
@@ -17,8 +19,8 @@ export default function CursorContainer() {
     },
   }));
   const [cursorOuterPosition, setCursorOuterPosition] = useSpring(() => ({
-    left: window.innerWidth / 2,
-    top: window.innerHeight / 2,
+    left: startingX,
+    top: startingY,
     config: {
       tension: 300,
       friction: 40,
