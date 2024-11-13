@@ -22,9 +22,9 @@ export default function Home() {
         <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start ">
           <div className="text-5xl">
             <TextStaggerReveal
-              delay={1000}
-              from={{ transform: "translate(-10%, -50%)", opacity: 0 }}
-              to={{ transform: "translate(0px, 0px)", opacity: 1 }}
+              delay={800}
+              from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
+              to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
             >
               <div>Senior Full Stack</div>
               <div>Software Engineer</div>
@@ -32,10 +32,10 @@ export default function Home() {
           </div>
           <div className="text-xl flex gap-x-1 flex-wrap">
             <TextStaggerReveal
-              delay={1300}
+              delay={1200}
               explode="words"
               from={{
-                transform: "translate(0%, 40%) skew(-20deg, 0)",
+                transform: "translate(0%, 40%) skew(30deg, 0)",
                 filter: "blur(8px)",
                 opacity: 0,
               }}
