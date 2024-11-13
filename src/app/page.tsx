@@ -1,3 +1,4 @@
+import TextStaggerReveal from "@/components/TextStaggerReveal";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
@@ -6,20 +7,49 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start flex-1 justify-between pb-16">
         <div>
           <div className="text-9xl">
-            Tye
-            <br />
-            Peck
+            <TextStaggerReveal
+              explode="characters"
+              from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
+              to={{ transform: "translate(0px, 0px)", opacity: 1 }}
+              trailChildrenClassName="inline-block"
+            >
+              Tye
+              <br />
+              Peck
+            </TextStaggerReveal>
           </div>
         </div>
         <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start ">
           <div className="text-5xl">
-            Senior Full Stack
-            <br /> Software Engineer
+            <TextStaggerReveal
+              delay={1000}
+              from={{ transform: "translate(-10%, -50%)", opacity: 0 }}
+              to={{ transform: "translate(0px, 0px)", opacity: 1 }}
+            >
+              <div>Senior Full Stack</div>
+              <div>Software Engineer</div>
+            </TextStaggerReveal>
           </div>
-          <div className="text-xl">
-            I am a multidisciplinary creative developer with over 7 years
-            experience. <br />
-            Currently working at Novata Solutions{" "}
+          <div className="text-xl flex gap-x-1 flex-wrap">
+            <TextStaggerReveal
+              delay={1300}
+              explode="words"
+              from={{
+                transform: "translate(0%, 40%) skew(-20deg, 0)",
+                filter: "blur(8px)",
+                opacity: 0,
+              }}
+              to={{
+                transform: "translate(0px, 0px) skew(0deg, 0deg)",
+                filter: "blur(0px)",
+                opacity: 1,
+              }}
+            >
+              I am a multidisciplinary creative developer with over 7 years
+              experience.
+              <hr className="w-full border-none" />
+              Currently working at Novata Solutions
+            </TextStaggerReveal>
           </div>
         </div>
       </main>
