@@ -34,12 +34,15 @@ export default function CursorContainer() {
     },
   });
 
-  const manageMouseMove = useCallback((e: MouseEvent) => {
-    const { clientX, clientY } = e;
+  const manageMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const { clientX, clientY } = e;
 
-    setCursorPosition({ left: clientX, top: clientY });
-    setCursorOuterPosition({ left: clientX, top: clientY });
-  }, []);
+      setCursorPosition({ left: clientX, top: clientY });
+      setCursorOuterPosition({ left: clientX, top: clientY });
+    },
+    [setCursorOuterPosition, setCursorPosition],
+  );
 
   const onMouseEnterViewport = useCallback(() => setIsVisible(true), []);
   const onMouseExitViewport = useCallback(() => setIsVisible(false), []);
@@ -51,8 +54,10 @@ export default function CursorContainer() {
 
     return () => {
       window.removeEventListener("mousemove", manageMouseMove);
+      window.removeEventListener("mouseover", onMouseEnterViewport);
+      window.removeEventListener("mouseout", onMouseExitViewport);
     };
-  }, []);
+  }, [manageMouseMove, onMouseEnterViewport, onMouseExitViewport]);
 
   return (
     <>
