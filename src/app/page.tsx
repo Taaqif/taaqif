@@ -4,9 +4,9 @@ import { Github, Linkedin, Mail } from "lucide-react";
 export default function Home() {
   return (
     <>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start flex-1 justify-between pb-16">
+      <main className="flex flex-col gap-8 row-start-2 items-start flex-1 justify-between pb-16">
         <div>
-          <div className="text-9xl">
+          <div className="text-7xl sm:text-8xl md:text-9xl">
             <TextStaggerReveal
               explode="characters"
               from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
@@ -19,18 +19,19 @@ export default function Home() {
             </TextStaggerReveal>
           </div>
         </div>
-        <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start ">
-          <div className="text-5xl">
+        <div className="flex flex-col gap-8 row-start-2 items-start ">
+          <div className="text-3xl md:text-5xl">
             <TextStaggerReveal
               delay={800}
               from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
               to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
+              config={{ mass: 1, tension: 210, friction: 40 }}
             >
               <div>Senior Full Stack</div>
               <div>Software Engineer</div>
             </TextStaggerReveal>
           </div>
-          <div className="text-xl flex gap-x-1 flex-wrap">
+          <div className="text-lg md:text-xl flex gap-x-1 flex-wrap">
             <TextStaggerReveal
               delay={1200}
               explode="words"
