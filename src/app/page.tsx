@@ -11,8 +11,6 @@ export default function Home() {
               explode="characters"
               from={{ transform: "translate(-10px, 0px)", opacity: 0 }}
               to={{ transform: "translate3d(0px, 0px, 0px)", opacity: 1 }}
-              // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
-              // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
               trailChildrenClassName="inline-block"
               config={{ mass: 1, tension: 210, friction: 70 }}
             >
@@ -25,8 +23,6 @@ export default function Home() {
               delay={600}
               from={{ transform: "translate(10px, 0px)", opacity: 0 }}
               to={{ transform: "translate3d(0px, 0px, 0px)", opacity: 1 }}
-              // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
-              // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
               trailChildrenClassName="inline-block"
               config={{ mass: 1, tension: 210, friction: 70 }}
             >
@@ -49,8 +45,6 @@ export default function Home() {
                   transform: "translate(0px, 0px) rotate(0deg) skew(0deg)",
                   opacity: 1,
                 }}
-                // from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
-                // to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
                 config={{ mass: 1, tension: 210, friction: 40 }}
               >
                 Senior Team Lead
@@ -69,8 +63,6 @@ export default function Home() {
                   transform: "translate(0px, 0px) rotate(0deg) skew(0deg)",
                   opacity: 1,
                 }}
-                // from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
-                // to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
                 config={{ mass: 1, tension: 210, friction: 40 }}
               >
                 Software Engineer
@@ -113,7 +105,7 @@ export default function Home() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="mailto:taaqifpeck@gmail.com"
+          href="mailto:taaqifpeck@gmail.com?subject=Hello there"
           target="_blank"
           rel="noopener noreferrer"
         >

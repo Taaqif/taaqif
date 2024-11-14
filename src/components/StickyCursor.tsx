@@ -2,11 +2,12 @@
 import { useSpring } from "@react-spring/web";
 import React, { useCallback, useEffect, useState } from "react";
 import { a } from "@react-spring/web";
-
+const clickables = ["A"];
 export default function StickyCursor() {
   const cursorSize = 10;
   const cursorOuterSize = cursorSize * 5;
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const [isTouchdevice, setIsTouchdevice] = useState<boolean>();
 
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
@@ -29,6 +30,14 @@ export default function StickyCursor() {
       mass: 0.5,
     },
   }));
+  const cursorOuterScale = useSpring({
+    transform: isHovering ? `scale(1.6)` : `scale(1)`,
+    config: {
+      tension: 300,
+      friction: 40,
+      mass: 0.5,
+    },
+  });
   const visibility = useSpring({
     opacity: isVisible ? 1 : 0,
     config: {
@@ -42,13 +51,27 @@ export default function StickyCursor() {
     (e: MouseEvent) => {
       const { clientX, clientY } = e;
 
-      setCursorPosition({ left: clientX, top: clientY });
-      setCursorOuterPosition({ left: clientX, top: clientY });
+      setCursorPosition.start({
+        left: clientX - cursorSize / 2,
+        top: clientY - cursorSize / 2,
+      });
+      setCursorOuterPosition.start({
+        left: clientX - cursorOuterSize / 2,
+        top: clientY - cursorOuterSize / 2,
+      });
     },
-    [setCursorOuterPosition, setCursorPosition],
+    [setCursorOuterPosition, setCursorPosition, cursorOuterSize],
   );
 
-  const onMouseEnterViewport = useCallback(() => setIsVisible(true), []);
+  const onMouseEnterViewport = useCallback((e: MouseEvent) => {
+    const { clientX: x, clientY: y } = e;
+    const elementsMouseIsOver = document.elementsFromPoint(x, y);
+    const isClickable = elementsMouseIsOver.some((elem) =>
+      clickables.includes(elem.tagName),
+    );
+    setIsHovering(isClickable);
+    setIsVisible(true);
+  }, []);
   const onMouseExitViewport = useCallback(() => setIsVisible(false), []);
 
   useEffect(() => {
@@ -80,7 +103,6 @@ export default function StickyCursor() {
         style={{
           width: `${cursorSize}px`,
           height: `${cursorSize}px`,
-          transform: "translate(-50%, -50%)",
           ...visibility,
           ...cursorPosition,
         }}
@@ -90,9 +112,9 @@ export default function StickyCursor() {
         style={{
           width: `${cursorOuterSize}px`,
           height: `${cursorOuterSize}px`,
-          transform: "translate(-50%, -50%)",
           ...visibility,
           ...cursorOuterPosition,
+          ...cursorOuterScale,
         }}
       ></a.div>
     </>

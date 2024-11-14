@@ -17,8 +17,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Tye Peck | Software Engineer",
-  description: "Tye Peck | Senior Team Lead • Software Engineer",
+  title: "Tye Peck | Senior Software Engineer",
+  description: "Senior Team Lead & Software Engineer",
 };
 
 export const viewport: Viewport = {
