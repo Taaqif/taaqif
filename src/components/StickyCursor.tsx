@@ -7,6 +7,8 @@ export default function StickyCursor() {
   const cursorSize = 10;
   const cursorOuterSize = cursorSize * 5;
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchdevice, setIsTouchdevice] = useState<boolean>();
+
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
   const startingY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
   const [cursorPosition, setCursorPosition] = useSpring(() => ({
@@ -60,6 +62,16 @@ export default function StickyCursor() {
       window.removeEventListener("mouseout", onMouseExitViewport);
     };
   }, [manageMouseMove, onMouseEnterViewport, onMouseExitViewport]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsTouchdevice(window.matchMedia("(hover: none)").matches);
+    }
+  }, []);
+
+  if (isTouchdevice) {
+    return <></>;
+  }
 
   return (
     <>
