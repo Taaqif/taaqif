@@ -24,6 +24,7 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.5.4",
     "three": "^0.169.0",
+    "use-inject-style": "^1.0.4",
     "webgl-fluid-enhanced": "^0.8.0"
   },
   "devDependencies": {
