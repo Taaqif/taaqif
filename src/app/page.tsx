@@ -14,6 +14,7 @@ export default function Home() {
               // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
               // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
               trailChildrenClassName="inline-block"
+              config={{ mass: 1, tension: 210, friction: 70 }}
             >
               Tye
             </StaggerReveal>
@@ -27,14 +28,15 @@ export default function Home() {
               // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
               // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
               trailChildrenClassName="inline-block"
+              config={{ mass: 1, tension: 210, friction: 70 }}
             >
               Peck
             </StaggerReveal>
           </div>
         </div>
         <div className="flex flex-col gap-8 row-start-2 items-start ">
-          <div>
-            <div className="text-3xl md:text-5xl overflow-hidden flex gap-x-1 flex-wrap">
+          <div className="text-3xl md:text-5xl">
+            <div className="overflow-hidden flex gap-x-2 flex-wrap">
               <StaggerReveal
                 delay={800}
                 explode="words"
@@ -51,10 +53,10 @@ export default function Home() {
                 // to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
                 config={{ mass: 1, tension: 210, friction: 40 }}
               >
-                Senior Full Stack
+                Senior Team Lead
               </StaggerReveal>
             </div>
-            <div className="text-3xl md:text-5xl overflow-hidden flex gap-x-1 flex-wrap">
+            <div className="overflow-hidden flex gap-x-2 flex-wrap">
               <StaggerReveal
                 delay={950}
                 explode="words"
@@ -75,7 +77,7 @@ export default function Home() {
               </StaggerReveal>
             </div>
           </div>
-          <div className="text-lg md:text-xl flex gap-x-1 flex-wrap">
+          <div className="text-lg md:text-xl flex gap-x-1 flex-wrap max-w-xl">
             <StaggerReveal
               delay={1200}
               explode="words"
@@ -90,8 +92,9 @@ export default function Home() {
                 opacity: 1,
               }}
             >
-              I am a multidisciplinary creative developer with over 7 years
-              experience.
+              A seasoned Full Stack Engineer and team leader, bringing together
+              both technical expertise and strategic leadership. I’m dedicated
+              to crafting engaging applications and scalable architecture.
               <hr className="w-full border-none" />
               Currently working at Novata Solutions
             </StaggerReveal>

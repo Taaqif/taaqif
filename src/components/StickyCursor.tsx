@@ -64,7 +64,7 @@ export default function StickyCursor() {
   return (
     <>
       <a.div
-        className="fixed pointer-events-none rounded-full bg-black dark:bg-white z-50"
+        className="fixed pointer-events-none rounded-full bg-[var(--cursor-color)] z-50"
         style={{
           width: `${cursorSize}px`,
           height: `${cursorSize}px`,
@@ -74,7 +74,7 @@ export default function StickyCursor() {
         }}
       ></a.div>
       <a.div
-        className="fixed pointer-events-none border-2 rounded-full border-black dark:border-white z-50"
+        className="fixed pointer-events-none border-2 rounded-full border-[var(--cursor-color)] z-50"
         style={{
           width: `${cursorOuterSize}px`,
           height: `${cursorOuterSize}px`,
