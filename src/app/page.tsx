@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col gap-8 row-start-2 items-start flex-1 justify-between pb-16">
-        <div>
-          <div className="text-7xl sm:text-8xl md:text-9xl">
+        <div className="text-7xl sm:text-8xl md:text-9xl uppercase">
+          <div className="font-thin">
             <StaggerReveal
               explode="characters"
               from={{ transform: "translate3d(-10px, 0px, 0px)", opacity: 0 }}
@@ -18,7 +18,7 @@ export default function Home() {
               Tye
             </StaggerReveal>
           </div>
-          <div className="text-7xl sm:text-8xl md:text-9xl">
+          <div className="font-semibold">
             <StaggerReveal
               explode="characters"
               delay={400}
