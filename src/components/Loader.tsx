@@ -9,7 +9,7 @@ type LoaderProps = {
 
 /* HTML: <div class="loader"></div> */
 export default function Loader({ children, preLoadMs }: LoaderProps) {
-  const expectedDurationMs = 1000;
+  const expectedDurationMs = 800;
   const loaderContainer = useRef<HTMLDivElement>(null);
   const [loaded, setIsLoaded] = useState(false);
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
@@ -23,14 +23,14 @@ export default function Loader({ children, preLoadMs }: LoaderProps) {
       transform: "scale(0)",
       opactiy: 0,
     },
+    delay: 700,
     config: {
-      delay: 500,
       mass: 1,
       tension: 210,
       friction: 20,
     },
   });
-  const [spring] = useSpring(() => ({
+  const spring = useSpring({
     from: {
       r: 0,
       cx: startingX,
@@ -41,9 +41,9 @@ export default function Loader({ children, preLoadMs }: LoaderProps) {
       cx: startingX,
       cy: startingY,
     },
+    delay: 800,
     config: {
       mass: 1,
-      delay: 800,
       tension: 210,
       friction: 30,
     },
@@ -53,7 +53,7 @@ export default function Loader({ children, preLoadMs }: LoaderProps) {
         setIsLoaded(true);
       }, timeToLoad);
     },
-  }));
+  });
   return (
     <>
       {loaded && children}
