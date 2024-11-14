@@ -38,3 +38,24 @@ li {
     text-wrap: balance;
   }
 }
+
+.loader-container {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  transform-origin: center;
+}
+.loader {
+  opacity: 0.1;
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 #0000;
+  animation: l1 1s infinite;
+}
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}

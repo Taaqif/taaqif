@@ -1,12 +1,36 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useSpring, a } from "@react-spring/web";
 
-export default function Loader() {
+type LoaderProps = {
+  children?: React.ReactNode;
+  preLoadMs?: number;
+};
+
+/* HTML: <div class="loader"></div> */
+export default function Loader({ children, preLoadMs }: LoaderProps) {
+  const expectedDurationMs = 1000;
   const loaderContainer = useRef<HTMLDivElement>(null);
+  const [loaded, setIsLoaded] = useState(false);
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
   const startingY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
-  const spring = useSpring({
+  const spinnerSpring = useSpring({
+    from: {
+      transform: "scale(1)",
+      opactiy: 1,
+    },
+    to: {
+      transform: "scale(0)",
+      opactiy: 0,
+    },
+    config: {
+      delay: 500,
+      mass: 1,
+      tension: 210,
+      friction: 20,
+    },
+  });
+  const [spring] = useSpring(() => ({
     from: {
       r: 0,
       cx: startingX,
@@ -19,32 +43,45 @@ export default function Loader() {
     },
     config: {
       mass: 1,
+      delay: 800,
       tension: 210,
       friction: 30,
     },
-  });
+    onStart() {
+      const timeToLoad = expectedDurationMs - (preLoadMs ?? 0);
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, timeToLoad);
+    },
+  }));
   return (
-    <div
-      ref={loaderContainer}
-      className="fixed w-full h-svh top-0 right-0 z-50 pointer-events-none"
-    >
-      <svg className="w-full h-full">
-        <defs>
-          <mask id="myMask">
-            <rect width="100%" height="100%" fill="white" />
-            <a.circle {...spring} fill="black" />
-          </mask>
-        </defs>
+    <>
+      {loaded && children}
+      <div
+        ref={loaderContainer}
+        className="fixed w-full h-svh top-0 right-0 z-50 pointer-events-none"
+      >
+        <a.div style={spinnerSpring} className="loader-container">
+          <div className="loader"></div>
+        </a.div>
+        <svg className="w-full h-full">
+          <defs>
+            <mask id="myMask">
+              <rect width="100%" height="100%" fill="white" />
+              <a.circle {...spring} fill="black" />
+            </mask>
+          </defs>
 
-        <rect
-          x="0"
-          y="0"
-          height="100%"
-          width="100%"
-          fill="var(--loader-background)"
-          mask="url(#myMask)"
-        />
-      </svg>
-    </div>
+          <rect
+            x="0"
+            y="0"
+            height="100%"
+            width="100%"
+            fill="var(--loader-background)"
+            mask="url(#myMask)"
+          />
+        </svg>
+      </div>
+    </>
   );
 }

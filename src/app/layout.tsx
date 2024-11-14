@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import FluidContainer from "@/components/FluidContainer";
 import StickyCursor from "@/components/StickyCursor";
+import Loader from "@/components/Loader";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,9 +39,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="pointer-events-none z-10 relative min-h-svh p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] flex flex-col">
-          {children}
+          <Loader preLoadMs={700}>{children}</Loader>
         </div>
-        {/* <Loader /> */}
+
         <FluidContainer />
         <StickyCursor />
       </body>
