@@ -7,7 +7,6 @@ type LoaderProps = {
   preLoadMs?: number;
 };
 
-/* HTML: <div class="loader"></div> */
 export default function Loader({ children, preLoadMs }: LoaderProps) {
   const expectedDurationMs = 800;
   const loaderContainer = useRef<HTMLDivElement>(null);
