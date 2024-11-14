@@ -9,7 +9,7 @@ export default function Home() {
           <div className="font-thin">
             <StaggerReveal
               explode="characters"
-              from={{ transform: "translate3d(-10px, 0px, 0px)", opacity: 0 }}
+              from={{ transform: "translate(-10px, 0px)", opacity: 0 }}
               to={{ transform: "translate3d(0px, 0px, 0px)", opacity: 1 }}
               // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
               // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
@@ -22,8 +22,8 @@ export default function Home() {
           <div className="font-semibold">
             <StaggerReveal
               explode="characters"
-              delay={400}
-              from={{ transform: "translate3d(10px, 0px, 0px)", opacity: 0 }}
+              delay={600}
+              from={{ transform: "translate(10px, 0px)", opacity: 0 }}
               to={{ transform: "translate3d(0px, 0px, 0px)", opacity: 1 }}
               // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
               // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
@@ -38,7 +38,7 @@ export default function Home() {
           <div className="text-3xl md:text-5xl">
             <div className="overflow-hidden flex gap-x-2 flex-wrap">
               <StaggerReveal
-                delay={800}
+                delay={900}
                 explode="words"
                 trailChildrenClassName="inline-block"
                 from={{
@@ -58,7 +58,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden flex gap-x-2 flex-wrap">
               <StaggerReveal
-                delay={950}
+                delay={1050}
                 explode="words"
                 trailChildrenClassName="inline-block"
                 from={{
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           <div className="text-lg md:text-xl flex gap-x-1 flex-wrap max-w-2xl">
             <StaggerReveal
-              delay={1200}
+              delay={1300}
               explode="words"
               from={{
                 transform: "translate(0%, 40%) skew(30deg, 0)",
