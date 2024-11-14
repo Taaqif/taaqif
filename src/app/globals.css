@@ -12,7 +12,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #11171c;
-    --loader-background: #000;
+    --loader-background: #141414;
     --foreground: #d1c5ad;
     --cursor-color: #d1c5ad;
   }
@@ -51,7 +51,7 @@ li {
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid;
-  border-color: #000 #0000;
+  border-color: var(--loader-background) var(--foreground);
   animation: l1 1s infinite;
 }
 @keyframes l1 {
