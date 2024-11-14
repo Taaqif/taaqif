@@ -77,7 +77,7 @@ export default function Home() {
               </StaggerReveal>
             </div>
           </div>
-          <div className="text-lg md:text-xl flex gap-x-1 flex-wrap max-w-xl">
+          <div className="text-lg md:text-xl flex gap-x-1 flex-wrap max-w-2xl">
             <StaggerReveal
               delay={1200}
               explode="words"
