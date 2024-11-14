@@ -92,7 +92,7 @@ export default function Home() {
                 opacity: 1,
               }}
             >
-              A seasoned Full Stack Engineer and team leader, bringing together
+              A seasoned Full Stack Engineer and Team Leader, bringing together
               both technical expertise and strategic leadership. I’m dedicated
               to crafting engaging applications and scalable architecture.
               <hr className="w-full border-none" />
