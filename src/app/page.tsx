@@ -14,22 +14,62 @@ export default function Home() {
               trailChildrenClassName="inline-block"
             >
               Tye
-              <br />
+            </StaggerReveal>
+          </div>
+          <div className="text-7xl sm:text-8xl md:text-9xl">
+            <StaggerReveal
+              explode="characters"
+              delay={400}
+              from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
+              to={{ transform: "translate(0px, 0px)", opacity: 1 }}
+              trailChildrenClassName="inline-block"
+            >
               Peck
             </StaggerReveal>
           </div>
         </div>
         <div className="flex flex-col gap-8 row-start-2 items-start ">
-          <div className="text-3xl md:text-5xl">
-            <StaggerReveal
-              delay={800}
-              from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
-              to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
-              config={{ mass: 1, tension: 210, friction: 40 }}
-            >
-              <div>Senior Full Stack</div>
-              <div>Software Engineer</div>
-            </StaggerReveal>
+          <div>
+            <div className="text-3xl md:text-5xl overflow-hidden flex gap-x-1 flex-wrap">
+              <StaggerReveal
+                delay={800}
+                explode="words"
+                trailChildrenClassName="inline-block"
+                from={{
+                  transform: "translate(0px, 130%) rotate(5deg) skew(20deg)",
+                  opacity: 0,
+                }}
+                to={{
+                  transform: "translate(0px, 0px) rotate(0deg) skew(0deg)",
+                  opacity: 1,
+                }}
+                // from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
+                // to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
+                config={{ mass: 1, tension: 210, friction: 40 }}
+              >
+                Senior Full Stack
+              </StaggerReveal>
+            </div>
+            <div className="text-3xl md:text-5xl overflow-hidden flex gap-x-1 flex-wrap">
+              <StaggerReveal
+                delay={950}
+                explode="words"
+                trailChildrenClassName="inline-block"
+                from={{
+                  transform: "translate(0px, 130%) rotate(5deg) skew(20deg)",
+                  opacity: 0,
+                }}
+                to={{
+                  transform: "translate(0px, 0px) rotate(0deg) skew(0deg)",
+                  opacity: 1,
+                }}
+                // from={{ transform: "translate(0%, 50%) skew(20deg)", opacity: 0 }}
+                // to={{ transform: "translate(0px, 0px) skew(0deg)", opacity: 1 }}
+                config={{ mass: 1, tension: 210, friction: 40 }}
+              >
+                Software Engineer
+              </StaggerReveal>
+            </div>
           </div>
           <div className="text-lg md:text-xl flex gap-x-1 flex-wrap">
             <StaggerReveal
