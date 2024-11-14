@@ -4,6 +4,7 @@
 
 :root {
   --background: #fffcf6;
+  --loader-background: #fff;
   --foreground: #373737;
   --cursor-color: #373737;
 }
@@ -11,6 +12,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #11171c;
+    --loader-background: #000;
     --foreground: #d1c5ad;
     --cursor-color: #d1c5ad;
   }
