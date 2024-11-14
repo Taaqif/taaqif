@@ -9,8 +9,10 @@ export default function Home() {
           <div className="text-7xl sm:text-8xl md:text-9xl">
             <StaggerReveal
               explode="characters"
-              from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
-              to={{ transform: "translate(0px, 0px)", opacity: 1 }}
+              from={{ transform: "translate3d(-10px, 0px, 0px)", opacity: 0 }}
+              to={{ transform: "translate3d(0px, 0px, 0px)", opacity: 1 }}
+              // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
+              // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
               trailChildrenClassName="inline-block"
             >
               Tye
@@ -20,8 +22,10 @@ export default function Home() {
             <StaggerReveal
               explode="characters"
               delay={400}
-              from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
-              to={{ transform: "translate(0px, 0px)", opacity: 1 }}
+              from={{ transform: "translate3d(10px, 0px, 0px)", opacity: 0 }}
+              to={{ transform: "translate3d(0px, 0px, 0px)", opacity: 1 }}
+              // from={{ transform: "translate(-10%, -10%)", opacity: 0 }}
+              // to={{ transform: "translate(0px, 0px)", opacity: 1 }}
               trailChildrenClassName="inline-block"
             >
               Peck
