@@ -10,6 +10,7 @@ type LoaderProps = {
 export default function Loader({ children, preLoadMs }: LoaderProps) {
   const expectedDurationMs = 800;
   const loaderContainer = useRef<HTMLDivElement>(null);
+  const [ready, setIsReady] = useState(false);
   const [loaded, setIsLoaded] = useState(false);
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
   const startingY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
@@ -29,7 +30,7 @@ export default function Loader({ children, preLoadMs }: LoaderProps) {
       friction: 20,
     },
   });
-  const spring = useSpring({
+  const loaderSpring = useSpring({
     from: {
       r: 0,
       cx: startingX,
@@ -49,38 +50,43 @@ export default function Loader({ children, preLoadMs }: LoaderProps) {
     onStart() {
       const timeToLoad = expectedDurationMs - (preLoadMs ?? 0);
       setTimeout(() => {
-        setIsLoaded(true);
+        setIsReady(true);
       }, timeToLoad);
+    },
+    onResolve() {
+      setIsLoaded(true);
     },
   });
   return (
     <>
-      {loaded && children}
-      <div
-        ref={loaderContainer}
-        className="fixed w-full h-svh top-0 right-0 z-50 pointer-events-none"
-      >
-        <a.div style={spinnerSpring} className="loader-container">
-          <div className="loader"></div>
-        </a.div>
-        <svg className="w-full h-full">
-          <defs>
-            <mask id="myMask">
-              <rect width="100%" height="100%" fill="white" />
-              <a.circle {...spring} fill="black" />
-            </mask>
-          </defs>
+      {ready && children}
+      {!loaded && (
+        <div
+          ref={loaderContainer}
+          className="fixed w-full h-svh top-0 right-0 z-50 pointer-events-none"
+        >
+          <a.div style={spinnerSpring} className="loader-container">
+            <div className="loader"></div>
+          </a.div>
+          <svg className="w-full h-full">
+            <defs>
+              <mask id="myMask">
+                <rect width="100%" height="100%" fill="white" />
+                <a.circle {...loaderSpring} fill="black" />
+              </mask>
+            </defs>
 
-          <rect
-            x="0"
-            y="0"
-            height="100%"
-            width="100%"
-            fill="var(--loader-background)"
-            mask="url(#myMask)"
-          />
-        </svg>
-      </div>
+            <rect
+              x="0"
+              y="0"
+              height="100%"
+              width="100%"
+              fill="var(--loader-background)"
+              mask="url(#myMask)"
+            />
+          </svg>
+        </div>
+      )}
     </>
   );
 }
