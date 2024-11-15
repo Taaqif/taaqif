@@ -43,8 +43,16 @@ export default function StickyCursor({
       mass: 0.5,
     },
   }));
-  const cursorOuterScale = useSpring({
-    transform: isHovering ? `scale(1.6)` : `scale(1)`,
+  const cursorClickableInnerScale = useSpring({
+    transform: isHovering ? `scale(5.3)` : `scale(1)`,
+    config: {
+      tension: 300,
+      friction: 40,
+      mass: 0.5,
+    },
+  });
+  const cursorClickableOuterScale = useSpring({
+    transform: isHovering ? `scale(0)` : `scale(1)`,
     config: {
       tension: 300,
       friction: 40,
@@ -118,22 +126,23 @@ export default function StickyCursor({
   return (
     <>
       <a.div
-        className="fixed pointer-events-none rounded-full bg-[var(--cursor-color)] z-50"
+        className="fixed pointer-events-none rounded-full bg-[var(--cursor-color)] z-50 mix-blend-difference"
         style={{
           width: `${cursorSize}px`,
           height: `${cursorSize}px`,
           ...visibility,
           ...cursorPosition,
+          ...cursorClickableInnerScale,
         }}
       ></a.div>
       <a.div
-        className="fixed pointer-events-none border-2 rounded-full border-[var(--cursor-color)] z-50"
+        className="fixed pointer-events-none border-2 rounded-full border-[var(--cursor-color)] z-50 mix-blend-color-dodge"
         style={{
           width: `${cursorOuterSize}px`,
           height: `${cursorOuterSize}px`,
           ...visibility,
           ...cursorOuterPosition,
-          ...cursorOuterScale,
+          ...cursorClickableOuterScale,
         }}
       ></a.div>
     </>
