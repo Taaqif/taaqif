@@ -1,16 +1,20 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useCursorStore } from "@/store/cursorStore";
 import { a, to, useSpring } from "@react-spring/web";
 import React, { AnchorHTMLAttributes, useRef, useState } from "react";
 
 export type MagneticLinkProps = {
   children?: React.ReactNode;
+  hoverIcon?: React.ReactNode;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 export default function MagneticLink({
   children,
   className,
+  hoverIcon,
   ...rest
 }: MagneticLinkProps) {
+  const setCursorIcon = useCursorStore((state) => state.setIcon);
   const [isHovered, setHovered] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
 
@@ -43,12 +47,16 @@ export default function MagneticLink({
     setHovered(false);
     api.start({ x: 0, y: 0 });
   };
+  const handleMouseEnter = () => {
+    setHovered(true);
+    setCursorIcon(hoverIcon);
+  };
 
   return (
     <a.a
       ref={linkRef}
       className="group py-4 px-2 -my-4 -mx-2 pointer-events-auto inline-block"
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{

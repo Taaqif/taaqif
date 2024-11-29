@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { a } from "@react-spring/web";
 import { useInjectStyle } from "use-inject-style";
 import { ArrowUpRight } from "lucide-react";
+import { useCursorStore } from "@/store/cursorStore";
 
 type StickyCursorProps = {
   clickables?: string[];
@@ -16,6 +17,7 @@ export default function StickyCursor({
   const cursorSize = 10;
   const cursorOuterSize = cursorSize * 5;
   const { inject, remove } = useInjectStyle("no-cursur-styles");
+  const cursorIcon = useCursorStore((state) => state.icon);
   const noCursorStyles = useMemo(
     () => `${clickables?.join(",")} {cursor: none}`,
     [clickables],
@@ -166,7 +168,7 @@ export default function StickyCursor({
           ),
         }}
       >
-        <ArrowUpRight />
+        {cursorIcon ?? <ArrowUpRight />}
       </a.div>
       <a.div
         className="fixed top-0 left-0 pointer-events-none border-2 rounded-full border-[var(--cursor-color)] z-50 mix-blend-color-dodge"

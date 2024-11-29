@@ -108,6 +108,7 @@ export default function Home() {
           href="https://github.com/Taaqif"
           target="_blank"
           rel="noopener noreferrer"
+          hoverIcon={<Github width={7} height={7} />}
         >
           <Github width={16} height={16} />
           Github
@@ -117,6 +118,7 @@ export default function Home() {
           href="mailto:taaqifpeck@gmail.com?subject=Hello there"
           target="_blank"
           rel="noopener noreferrer"
+          hoverIcon={<Mail width={7} height={7} />}
         >
           <Mail width={16} height={16} />
           Email
@@ -126,6 +128,7 @@ export default function Home() {
           href="https://linkedin.com/in/tye-peck"
           target="_blank"
           rel="noopener noreferrer"
+          hoverIcon={<Linkedin width={7} height={7} />}
         >
           <Linkedin width={16} height={16} />
           LinkedIn
