@@ -5,6 +5,7 @@ import { a } from "@react-spring/web";
 import { useInjectStyle } from "use-inject-style";
 import { ArrowUpRight } from "lucide-react";
 import { useCursorStore } from "@/store/cursorStore";
+import { useIsTouchDevice } from "@/lib/hooks";
 
 type StickyCursorProps = {
   clickables?: string[];
@@ -24,7 +25,7 @@ export default function StickyCursor({
   );
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [isTouchdevice, setIsTouchdevice] = useState<boolean>();
+  const isTouchdevice = useIsTouchDevice();
 
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
   const startingY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
@@ -114,10 +115,6 @@ export default function StickyCursor({
       window.removeEventListener("mouseout", onMouseExitViewport);
     };
   }, [manageMouseMove, onMouseExitViewport]);
-
-  useEffect(() => {
-    setIsTouchdevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
-  }, []);
 
   useEffect(() => {
     if (typeof window === "object" && !showSystemCursor) {

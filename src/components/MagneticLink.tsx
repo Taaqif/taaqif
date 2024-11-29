@@ -1,4 +1,5 @@
 "use client";
+import { useIsTouchDevice } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 import { useCursorStore } from "@/store/cursorStore";
 import { a, to, useSpring } from "@react-spring/web";
@@ -14,6 +15,7 @@ export default function MagneticLink({
   hoverIcon,
   ...rest
 }: MagneticLinkProps) {
+  const isTouchdevice = useIsTouchDevice();
   const setCursorIcon = useCursorStore((state) => state.setIcon);
   const [isHovered, setHovered] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
@@ -31,7 +33,7 @@ export default function MagneticLink({
   const handleMouseMove = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
-    if (!linkRef.current || !isHovered) return;
+    if (!linkRef.current || !isHovered || isTouchdevice) return;
 
     const rect = linkRef.current.getBoundingClientRect();
     const linkCenterX = rect.left + rect.width / 2;
