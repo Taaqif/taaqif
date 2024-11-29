@@ -116,9 +116,7 @@ export default function StickyCursor({
   }, [manageMouseMove, onMouseExitViewport]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsTouchdevice(window.matchMedia("(hover: none)").matches);
-    }
+    setIsTouchdevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
   useEffect(() => {
