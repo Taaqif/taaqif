@@ -1,3 +1,4 @@
+import MagneticLink from "@/components/MagneticLink";
 import StaggerReveal from "@/components/StaggerReveal";
 import { Github, Linkedin, Mail } from "lucide-react";
 
@@ -88,39 +89,47 @@ export default function Home() {
               both technical expertise and strategic leadership. I’m dedicated
               to crafting engaging applications and scalable architecture.
               <hr className="w-full border-none my-2" />
-              Currently working at Novata Solutions
+              Currently working at
+              <MagneticLink
+                className="flex gap-2"
+                href="https://novatasolutions.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Novata Solutions
+              </MagneticLink>
             </StaggerReveal>
           </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+      <footer className="row-start-3 flex gap-8 flex-wrap items-center justify-center">
+        <MagneticLink
+          className="flex items-center gap-2 "
           href="https://github.com/Taaqif"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Github width={16} height={16} />
           Github
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+        </MagneticLink>
+        <MagneticLink
+          className="flex items-center gap-2 "
           href="mailto:taaqifpeck@gmail.com?subject=Hello there"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Mail width={16} height={16} />
           Email
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+        </MagneticLink>
+        <MagneticLink
+          className="flex items-center gap-2"
           href="https://linkedin.com/in/tye-peck"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Linkedin width={16} height={16} />
           LinkedIn
-        </a>
+        </MagneticLink>
       </footer>
     </>
   );

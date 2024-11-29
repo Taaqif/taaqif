@@ -1,8 +1,9 @@
 "use client";
-import { useSpring } from "@react-spring/web";
+import { to, useSpring } from "@react-spring/web";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { a } from "@react-spring/web";
 import { useInjectStyle } from "use-inject-style";
+import { ArrowUpRight } from "lucide-react";
 
 type StickyCursorProps = {
   clickables?: string[];
@@ -26,8 +27,8 @@ export default function StickyCursor({
   const startingX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
   const startingY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
   const [cursorPosition, setCursorPosition] = useSpring(() => ({
-    left: startingX - cursorSize / 2,
-    top: startingY - cursorSize / 2,
+    x: startingX - cursorSize / 2,
+    y: startingY - cursorSize / 2,
     config: {
       tension: 300,
       friction: 20,
@@ -35,8 +36,8 @@ export default function StickyCursor({
     },
   }));
   const [cursorOuterPosition, setCursorOuterPosition] = useSpring(() => ({
-    left: startingX - cursorOuterSize / 2,
-    top: startingY - cursorOuterSize / 2,
+    x: startingX - cursorOuterSize / 2,
+    y: startingY - cursorOuterSize / 2,
     config: {
       tension: 300,
       friction: 50,
@@ -44,7 +45,7 @@ export default function StickyCursor({
     },
   }));
   const cursorClickableInnerScale = useSpring({
-    transform: isHovering ? `scale(5.3)` : `scale(1)`,
+    scale: isHovering ? 5.3 : 1,
     config: {
       tension: 300,
       friction: 40,
@@ -52,7 +53,15 @@ export default function StickyCursor({
     },
   });
   const cursorClickableOuterScale = useSpring({
-    transform: isHovering ? `scale(0)` : `scale(1)`,
+    scale: isHovering ? 0 : 1,
+    config: {
+      tension: 300,
+      friction: 40,
+      mass: 0.5,
+    },
+  });
+  const cursorClickableIconScale = useSpring({
+    scale: isHovering ? 4 : 0,
     config: {
       tension: 300,
       friction: 40,
@@ -73,12 +82,12 @@ export default function StickyCursor({
       const { clientX, clientY } = e;
 
       setCursorPosition.start({
-        left: clientX - cursorSize / 2,
-        top: clientY - cursorSize / 2,
+        x: clientX - cursorSize / 2,
+        y: clientY - cursorSize / 2,
       });
       setCursorOuterPosition.start({
-        left: clientX - cursorOuterSize / 2,
-        top: clientY - cursorOuterSize / 2,
+        x: clientX - cursorOuterSize / 2,
+        y: clientY - cursorOuterSize / 2,
       });
       const elementsMouseIsOver = document.elementsFromPoint(clientX, clientY);
       const isClickable = elementsMouseIsOver.some((elem) =>
@@ -126,23 +135,53 @@ export default function StickyCursor({
   return (
     <>
       <a.div
-        className="fixed pointer-events-none rounded-full bg-[var(--cursor-color)] z-50 mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none rounded-full bg-[var(--cursor-color)] z-50 mix-blend-difference"
         style={{
           width: `${cursorSize}px`,
           height: `${cursorSize}px`,
           ...visibility,
-          ...cursorPosition,
-          ...cursorClickableInnerScale,
+          transform: to(
+            [
+              cursorPosition.x,
+              cursorPosition.y,
+              cursorClickableInnerScale.scale,
+            ],
+            (x, y, scale) => `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
+          ),
         }}
       ></a.div>
       <a.div
-        className="fixed pointer-events-none border-2 rounded-full border-[var(--cursor-color)] z-50 mix-blend-color-dodge"
+        className="fixed top-0 left-0 pointer-events-none z-50 mix-blend-overlay flex items-center justify-center"
+        style={{
+          width: `${cursorSize}px`,
+          height: `${cursorSize}px`,
+          ...visibility,
+          transform: to(
+            [
+              cursorPosition.x,
+              cursorPosition.y,
+              cursorClickableIconScale.scale,
+            ],
+            (x, y, scale) => `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
+          ),
+        }}
+      >
+        <ArrowUpRight />
+      </a.div>
+      <a.div
+        className="fixed top-0 left-0 pointer-events-none border-2 rounded-full border-[var(--cursor-color)] z-50 mix-blend-color-dodge"
         style={{
           width: `${cursorOuterSize}px`,
           height: `${cursorOuterSize}px`,
           ...visibility,
-          ...cursorOuterPosition,
-          ...cursorClickableOuterScale,
+          transform: to(
+            [
+              cursorOuterPosition.x,
+              cursorOuterPosition.y,
+              cursorClickableOuterScale.scale,
+            ],
+            (x, y, scale) => `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
+          ),
         }}
       ></a.div>
     </>
