@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import FluidContainer from "@/components/FluidContainer";
 import StickyCursor from "@/components/StickyCursor";
+import CanvasContainer from "@/components/CanvasContainer";
 import Loader from "@/components/Loader";
 
 const geistSans = localFont({
@@ -42,7 +43,8 @@ export default function RootLayout({
           <Loader preLoadMs={700}>{children}</Loader>
         </div>
 
-        <FluidContainer />
+        {/* <FluidContainer /> */}
+        <CanvasContainer />
         <StickyCursor />
       </body>
     </html>
