@@ -23,7 +23,7 @@ const baubleMaterial = new THREE.MeshLambertMaterial({
   emissive: "red",
 });
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
-const baubles = [...Array(10)].map(() => ({
+const baubles = [...Array(40)].map(() => ({
   scale: [0.75, 0.75, 1, 1, 1.25][Math.floor(Math.random() * 5)],
 }));
 
