@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import StickyCursor from "@/components/StickyCursor";
-import CanvasContainer from "@/components/CanvasContainer";
+// import CanvasContainer from "@/components/CanvasContainer";
 import Loader from "@/components/Loader";
+import CanvasContainer2 from "@/components/CanvasContainer2";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,7 +44,8 @@ export default function RootLayout({
         </div>
 
         {/* <FluidContainer /> */}
-        <CanvasContainer />
+        {/* <CanvasContainer /> */}
+        <CanvasContainer2 />
         <StickyCursor />
       </body>
     </html>
