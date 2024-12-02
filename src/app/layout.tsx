@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import FluidContainer from "@/components/FluidContainer";
 import StickyCursor from "@/components/StickyCursor";
 import CanvasContainer from "@/components/CanvasContainer";
 import Loader from "@/components/Loader";

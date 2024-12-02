@@ -2,12 +2,7 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Environment,
-  MeshDistortMaterial,
-  MeshTransmissionMaterial,
-} from "@react-three/drei";
-import { Fluid } from "@whatisjery/react-fluid-distortion";
+import { Environment, MeshDistortMaterial } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
   BallCollider,
@@ -16,7 +11,6 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
-import { BlendFunction } from "postprocessing";
 
 const baubleMaterial = new THREE.MeshLambertMaterial({
   color: "#c0a0a0",
